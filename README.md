@@ -133,7 +133,10 @@ the normalized result will looks like:
             "type": "comments",
             "id": "12"
           }
-        ]
+        ],
+        "__apiInfo": {
+          "type": "articles"
+        }
       }
     },
     "people": {
@@ -141,7 +144,10 @@ the normalized result will looks like:
         "id": "9",
         "firstName": "Dan",
         "lastName": "Gebhardt",
-        "twitter": "dgeb"
+        "twitter": "dgeb",
+        "__apiInfo": {
+          "type": "people"
+        }
       }
     },
     "comments": {
@@ -151,6 +157,9 @@ the normalized result will looks like:
         "author": {
           "type": "people",
           "id": "2"
+        },
+        "__apiInfo": {
+          "type": "comments"
         }
       },
       "12": {
@@ -159,6 +168,9 @@ the normalized result will looks like:
         "author": {
           "type": "people",
           "id": "9"
+        },
+        "__apiInfo": {
+          "type": "comments"
         }
       }
     }
@@ -169,7 +181,7 @@ the normalized result will looks like:
     "total_pages": 88,
     "total_count": 88
   },
-  "serverSideSortResult": {
+  "serverSideSort": {
     "articles": ["1"],
     "people": ["9"],
     "comments": ["5", "12"]

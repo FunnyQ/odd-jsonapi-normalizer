@@ -8,7 +8,7 @@ export default class Normalizer {
     this.data = Array.isArray(response.data) ? response.data : [response.data]
     this.includedResources = response.included || []
     this.resources = [...this.data, ...this.includedResources]
-    this.serverSideSortResult = {}
+    this.serverSideSort = {}
     this.entities = {}
     this.meta = response.meta
   }
@@ -18,7 +18,7 @@ export default class Normalizer {
    *
    * @static
    * @param {Object} response response that returned by Axios
-   * @returns {Object} { serverSideSortResult, entities, meta }
+   * @returns {Object} { serverSideSort, entities, meta }
    * @memberof Normalizer
    */
   static normalize(response) {
@@ -28,19 +28,19 @@ export default class Normalizer {
   /**
    * normalizing JSON:API response
    *
-   * @returns {Object} { serverSideSortResult, entities, meta }
+   * @returns {Object} { serverSideSort, entities, meta }
    * @memberof Normalizer
    */
   normalize() {
     this.resources.forEach((resource) => {
-      this.__recordServerSideSortResult(resource)
+      this.__recordServerSideSort(resource)
       this.__writeToEntities(resource)
     })
 
     return {
       entities: this.entities,
       meta: this.meta,
-      serverSideSortResult: this.serverSideSortResult
+      serverSideSort: this.serverSideSort
     }
   }
 
@@ -50,10 +50,10 @@ export default class Normalizer {
    * @param {Object} resource JSON:API resource object
    * @memberof Normalizer
    */
-  __recordServerSideSortResult(resource) {
-    if (!this.serverSideSortResult[resource.type]) this.serverSideSortResult[resource.type] = []
+  __recordServerSideSort(resource) {
+    if (!this.serverSideSort[resource.type]) this.serverSideSort[resource.type] = []
 
-    this.serverSideSortResult[resource.type].push(resource.id)
+    this.serverSideSort[resource.type].push(resource.id)
   }
 
   /**
@@ -70,7 +70,8 @@ export default class Normalizer {
     this.entities[resource.type][resource.id] = Object.assign(
       { id: resource.id },
       resource.attributes,
-      this.__relationshipsFrom(resource)
+      this.__relationshipsFrom(resource),
+      this.__apiData(resource)
     )
   }
 
@@ -80,7 +81,7 @@ export default class Normalizer {
    * If it is an one-to-many relationship, result will like
    * `{ variants: [{ type: 'product-variants', id: '1' }, { type: 'product-variants', id: '2' }] }`
    *
-   * @param {*} resource
+   * @param {Object} resource JSON:API resource object
    * @returns
    * @memberof Normalizer
    */
@@ -94,5 +95,20 @@ export default class Normalizer {
     })
 
     return result
+  }
+
+  /**
+   * save JSON:API resource type and id in `__apiData` attribute.
+   *
+   * @param {Object} resource JSON:API resource object
+   * @returns
+   * @memberof Normalizer
+   */
+  __apiData(resource) {
+    return {
+      __apiInfo: {
+        type: resource.type
+      }
+    }
   }
 }
