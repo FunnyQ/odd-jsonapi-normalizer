@@ -135,7 +135,10 @@ the normalized result will looks like:
           }
         ],
         "__apiInfo": {
-          "type": "articles"
+          "type": "articles",
+          "links": {
+            "self": "http://example.com/articles/1"
+          }
         }
       }
     },
@@ -146,7 +149,10 @@ the normalized result will looks like:
         "lastName": "Gebhardt",
         "twitter": "dgeb",
         "__apiInfo": {
-          "type": "people"
+          "type": "people",
+          "links": {
+            "self": "http://example.com/people/9"
+          }
         }
       }
     },
@@ -159,7 +165,10 @@ the normalized result will looks like:
           "id": "2"
         },
         "__apiInfo": {
-          "type": "comments"
+          "type": "comments",
+          "links": {
+            "self": "http://example.com/comments/5"
+          }
         }
       },
       "12": {
@@ -170,7 +179,10 @@ the normalized result will looks like:
           "id": "9"
         },
         "__apiInfo": {
-          "type": "comments"
+          "type": "comments",
+          "links": {
+            "self": "http://example.com/comments/12"
+          }
         }
       }
     }

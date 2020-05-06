@@ -98,17 +98,20 @@ export default class Normalizer {
   }
 
   /**
-   * save JSON:API resource type and id in `__apiData` attribute.
+   * save JSON:API resource type and otherinfo in `__apiData` attribute.
    *
    * @param {Object} resource JSON:API resource object
    * @returns
    * @memberof Normalizer
    */
   __apiData(resource) {
-    return {
+    let result = {
       __apiInfo: {
         type: resource.type
       }
     }
+
+    if (resource.hasOwnProperty('links')) Object.assign(result.__apiInfo, { links: resource.links })
+    return result
   }
 }
