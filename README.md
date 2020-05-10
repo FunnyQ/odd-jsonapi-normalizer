@@ -136,6 +136,7 @@ the normalized result will looks like:
         ],
         "__apiInfo": {
           "type": "articles",
+          "relationships": ["author", "comments"],
           "links": {
             "self": "http://example.com/articles/1"
           }
@@ -166,6 +167,7 @@ the normalized result will looks like:
         },
         "__apiInfo": {
           "type": "comments",
+          "relationships": ["author"],
           "links": {
             "self": "http://example.com/comments/5"
           }
@@ -180,6 +182,7 @@ the normalized result will looks like:
         },
         "__apiInfo": {
           "type": "comments",
+          "relationships": ["author"],
           "links": {
             "self": "http://example.com/comments/12"
           }

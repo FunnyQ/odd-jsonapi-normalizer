@@ -107,11 +107,17 @@ export default class Normalizer {
   __apiData(resource) {
     let result = {
       __apiInfo: {
-        type: resource.type
+        type: resource.type,
+        id: resource.id
       }
     }
 
     if (resource.hasOwnProperty('links')) Object.assign(result.__apiInfo, { links: resource.links })
+    if (resource.hasOwnProperty('relationships')) {
+      Object.assign(result.__apiInfo, {
+        relationships: Object.keys(resource.relationships)
+      })
+    }
     return result
   }
 }
