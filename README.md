@@ -6,11 +6,12 @@ Normalizing [JSON:API](https://jsonapi.org/) spec responses from API server. Con
 
 ```js
 import axios from 'axios'
-import Normalizer from 'odd-jsonapi_normalizer'
+import Normalizer from 'odd-jsonapi-normalizer'
 
 async function fetchProducts() {
   const response = await axios.get('http://api.example.com/products')
-  const normalizedResult = Normalizer.normalize(response)
+  const jsonApiDocument = response.data
+  const normalizedResult = Normalizer.normalize(jsonApiDocument)
 
   return normalizedResult
 }
