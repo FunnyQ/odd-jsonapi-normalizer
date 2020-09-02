@@ -1,11 +1,11 @@
 import * as Types from '../types';
 export declare class JsonapiNormalizer {
-    data: Types.JSONAPI.ResourceObject[];
-    includedResources: Types.JSONAPI.ResourceObject[];
-    resources: Types.JSONAPI.ResourceObject[];
-    serverSideSort: Types.ServerSideSortData;
-    entities: Types.EntitiesData;
-    meta: Types.JSONAPI.MetaObject;
+    readonly data: Types.JSONAPI.ResourceObject[];
+    readonly includedResources: Types.JSONAPI.ResourceObject[];
+    readonly resources: Types.JSONAPI.ResourceObject[];
+    readonly serverSideSort: Types.ServerSideSortData;
+    readonly entities: Types.EntitiesData;
+    readonly meta: Types.JSONAPI.MetaObject;
     /**
      *Creates an instance of Normalizer.
      */

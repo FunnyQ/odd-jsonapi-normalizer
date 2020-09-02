@@ -1,6 +1,6 @@
 {
   "name": "odd-jsonapi-normalizer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Normalizing JSON:API spec response from API server. Converting `data` into entity based structure.",
   "main": "./dist/odd-jsonapi-normalizer.js",
   "scripts": {

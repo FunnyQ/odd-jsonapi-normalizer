@@ -6,6 +6,10 @@ export type ApiInfo = {
   type: string
   id: string
   relationships?: string[]
+  relationship?: {
+    type: string
+    id: string
+  } // only for VuexJsonapiAdapter, use as argument to define resource relationship.
   links?: JSONAPI.LinksObject
 }
 export type NormalizedEntity = {
