@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ESNEXT",
-    "module": "commonjs",
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
     "lib": ["esnext", "dom"],
     "allowJs": true,
     "declaration": true,
