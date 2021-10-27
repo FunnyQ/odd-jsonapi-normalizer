@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.JsonapiNormalizer = void 0;
-class JsonapiNormalizer {
+export class JsonapiNormalizer {
     /**
      *Creates an instance of Normalizer.
      */
@@ -104,6 +101,5 @@ class JsonapiNormalizer {
         return result;
     }
 }
-exports.JsonapiNormalizer = JsonapiNormalizer;
-exports.default = JsonapiNormalizer;
+export default JsonapiNormalizer;
 //# sourceMappingURL=odd-jsonapi-normalizer.js.map
